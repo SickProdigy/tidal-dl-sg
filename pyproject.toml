@@ -27,6 +27,10 @@ documentation = "https://gitea.rcs1.top/sickprodigy/tidal-dl-sg"
 [project.scripts]
 tidal-dl-sg = "tidal_dl_sg.cli:app"
 tidal-dl-sg-gui = "tidal_dl_sg.gui:gui_activate"
+tidal-dl = "tidal_dl_sg.cli:app"
+tidal-dl-gui = "tidal_dl_sg.gui:gui_activate"
+tidal-dl-ng = "tidal_dl_sg.cli:app"
+tidal-dl-ng-gui = "tidal_dl_sg.gui:gui_activate"
 
 [tool.poetry]
 packages = [{ include = "tidal_dl_sg" }]

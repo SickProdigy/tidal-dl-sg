@@ -48,6 +48,8 @@ You can use the command line (CLI) version to download media by URL:
 tidal-dl-sg dl https://tidal.com/browse/track/46755209
 ```
 
+The `tidal-dl` and `tidal-dl-ng` commands are compatibility aliases and run the same Super Gen CLI with the same configuration.
+
 Or by your favorites collections:
 
 ```bash
@@ -64,6 +66,8 @@ tidal-dl-sg-gui
 # OR
 tidal-dl-sg gui
 ```
+
+The GUI is also available through the compatibility aliases `tidal-dl-gui` and `tidal-dl-ng-gui`.
 
 If you would like to use the GUI version as a binary, have a look at the
 [release page](https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/releases) and download the correct version for your OS.
