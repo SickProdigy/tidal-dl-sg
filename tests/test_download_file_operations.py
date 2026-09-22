@@ -157,14 +157,9 @@ def test_downsample_audio_raises_when_output_move_fails(
     flac_mock: MagicMock = MagicMock()
     flac_mock.info.sample_rate = 96000
     flac_mock.info.bits_per_sample = 24
-    ffmpeg_mock: MagicMock = MagicMock()
-    ffmpeg_mock.option.return_value = ffmpeg_mock
-    ffmpeg_mock.input.return_value = ffmpeg_mock
-    ffmpeg_mock.output.return_value = ffmpeg_mock
-
     with (
         patch("tidaler.download.FLAC", return_value=flac_mock),
-        patch("tidaler.download.FFmpeg", return_value=ffmpeg_mock),
+        patch("tidaler.download.subprocess.run"),
         patch.object(download_instance, "_move_file", return_value=False),
         pytest.raises(OSError),
     ):

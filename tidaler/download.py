@@ -13,6 +13,7 @@ import os
 import pathlib
 import random
 import shutil
+import subprocess
 import tempfile
 import time
 from collections.abc import Callable
@@ -22,7 +23,6 @@ from uuid import uuid4
 
 import m3u8
 import requests
-from ffmpeg import FFmpeg
 from mutagen.flac import FLAC
 from pathvalidate import sanitize_filename
 from requests.adapters import HTTPAdapter, Retry
@@ -1845,16 +1845,24 @@ class Download:
 
         self.fn_logger.debug(f"Converting video: {path_file.name} -> {path_file_out.name}")
 
-        ffmpeg = (
-            FFmpeg(executable=self.settings.data.path_binary_ffmpeg)
-            .option("y")
-            .option("hide_banner")
-            .option("nostdin")
-            .input(url=path_file)
-            .output(url=path_file_out, codec="copy", map=0, loglevel="quiet")
+        subprocess.run(
+            [
+                self.settings.data.path_binary_ffmpeg,
+                "-y",
+                "-hide_banner",
+                "-nostdin",
+                "-i",
+                str(path_file),
+                "-codec",
+                "copy",
+                "-map",
+                "0",
+                "-loglevel",
+                "quiet",
+                str(path_file_out),
+            ],
+            check=True,
         )
-
-        ffmpeg.execute()
 
         self.fn_logger.debug(f"Video conversion complete: {path_file_out.name}")
 
@@ -1871,22 +1879,27 @@ class Download:
         """
         path_media_out = path_media_src.with_suffix(AudioExtensions.FLAC)
 
-        ffmpeg = (
-            FFmpeg(executable=self.settings.data.path_binary_ffmpeg)
-            .option("hide_banner")
-            .option("nostdin")
-            .input(url=path_media_src)
-            .output(
-                url=path_media_out,
-                map=0,
-                movflags="use_metadata_tags",
-                acodec="copy",
-                map_metadata="0:g",
-                loglevel="quiet",
-            )
+        subprocess.run(
+            [
+                self.settings.data.path_binary_ffmpeg,
+                "-hide_banner",
+                "-nostdin",
+                "-i",
+                str(path_media_src),
+                "-map",
+                "0",
+                "-movflags",
+                "use_metadata_tags",
+                "-acodec",
+                "copy",
+                "-map_metadata",
+                "0:g",
+                "-loglevel",
+                "quiet",
+                str(path_media_out),
+            ],
+            check=True,
         )
-
-        ffmpeg.execute()
 
         return path_media_out
 
@@ -1953,15 +1966,18 @@ class Download:
         with tempfile.TemporaryDirectory(ignore_cleanup_errors=True) as tmp_path_dir:
             path_out = pathlib.Path(tmp_path_dir) / path_file.name
 
-            ffmpeg = (
-                FFmpeg(executable=self.settings.data.path_binary_ffmpeg)
-                .option("y")
-                .option("hide_banner")
-                .option("nostdin")
-                .input(url=path_file)
-                .output(url=path_out, **output_kwargs)
-            )
-            ffmpeg.execute()
+            command = [
+                self.settings.data.path_binary_ffmpeg,
+                "-y",
+                "-hide_banner",
+                "-nostdin",
+                "-i",
+                str(path_file),
+            ]
+            for key, value in output_kwargs.items():
+                command.extend([f"-{key}", str(value)])
+            command.append(str(path_out))
+            subprocess.run(command, check=True)
 
             if not self._move_file(path_out, path_file, overwrite=True):
                 error_message = f"Unable to replace downsampled file: {path_file}"
