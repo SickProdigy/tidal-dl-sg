@@ -37,7 +37,7 @@ $ tidaler --help
 
 ## Installation / Upgrade
 
-**Requirements**: Python version 3.12 / 3.13 (other versions might work but are not tested!)
+**Requirements**: Python version 3.12 / 3.13 / 3.14
 
 ```bash
 pip install --upgrade tidaler
