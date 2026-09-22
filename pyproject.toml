@@ -4,7 +4,7 @@ authors = [
   { name = "sickprodigy" },
   { name = "Maya Doshi", email = "maya-doshi@proton.me" },
 ]
-version = "0.1.8"
+version = "0.2.0"
 description = "TIDAL Downloader Super Gen"
 readme = "README.md"
 license = "AGPL-3.0-only"
