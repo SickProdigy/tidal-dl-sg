@@ -1,10 +1,10 @@
-site_name: tidaler
-repo_url: https://github.com/maya-doshi/tidaler
-site_url: https://maya-doshi.github.io/tidaler
+site_name: tidal_dl_sg
+repo_url: https://gitea.rcs1.top/sickprodigy/tidal-dl-sg
+site_url: https://gitea.rcs1.top/sickprodigy/tidal-dl-sg
 site_description: TIDAL Media Downloader!
 site_author: Maya Doshi
 edit_uri: edit/master/docs/
-repo_name: maya-doshi/tidaler
+repo_name: sickprodigy/tidal-dl-sg
 copyright: Maintained by <a href="https://example.com">Robby</a>.
 
 nav:
@@ -43,9 +43,9 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/maya-doshi/tidaler
+      link: https://gitea.rcs1.top/sickprodigy/tidal-dl-sg
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/tidaler
+      link: https://pypi.org/project/tidal_dl_sg
 
 markdown_extensions:
   - toc:

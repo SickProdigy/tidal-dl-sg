@@ -6,8 +6,8 @@ from urllib.parse import urlparse
 import requests
 import toml
 
-from tidaler.constants import REQUESTS_TIMEOUT_SEC
-from tidaler.model.meta import ProjectInformation, ReleaseLatest
+from tidal_dl_sg.constants import REQUESTS_TIMEOUT_SEC
+from tidal_dl_sg.model.meta import ProjectInformation, ReleaseLatest
 
 
 def metadata_project() -> ProjectInformation:
@@ -43,7 +43,7 @@ def metadata_project() -> ProjectInformation:
                 # attempt to parse, else use hardcoded fallback
                 repo_url = next(
                     (url.split(", ")[1] for url in urls if url.startswith("Repository")),
-                    "https://github.com/maya-doshi/tidaler",
+                    "https://gitea.rcs1.top/sickprodigy/tidal-dl-sg",
                 )
 
             result = ProjectInformation(version=meta_info["Version"], repository_url=repo_url)
@@ -76,8 +76,10 @@ def repository_path() -> str:
 
 def latest_version_information() -> ReleaseLatest:
     release_info: ReleaseLatest
-    repo_path: str = repository_path()
-    url: str = f"https://api.github.com/repos{repo_path}/releases/latest"
+    repo_url: str = repository_url()
+    parsed_url = urlparse(repo_url)
+    repo_path: str = parsed_url.path.rstrip("/")
+    url: str = f"{parsed_url.scheme}://{parsed_url.netloc}/api/v1/repos{repo_path}/releases/latest"
 
     try:
         response = requests.get(url, timeout=REQUESTS_TIMEOUT_SEC)
@@ -101,9 +103,7 @@ def latest_version_information() -> ReleaseLatest:
 
 
 def name_package() -> str:
-    package_name: str = __package__ or __name__
-
-    return package_name
+    return "tidal-dl-sg"
 
 
 def is_dev_env() -> bool:
@@ -133,7 +133,7 @@ def name_app() -> str:
     return app_name
 
 
-__name_display__ = name_app()
+__name_display__ = "tidal_dl_sg"
 __version__ = version_app()
 
 

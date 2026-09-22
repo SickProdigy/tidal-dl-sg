@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from dataclasses_json import dataclass_json
 from tidalapi import Quality
 
-from tidaler.constants import CoverDimensions, DownsampleTarget, InitialKey, MetadataTargetUPC, QualityVideo
+from tidal_dl_sg.constants import CoverDimensions, DownsampleTarget, InitialKey, MetadataTargetUPC, QualityVideo
 
 
 @dataclass_json

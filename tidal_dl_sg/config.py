@@ -10,15 +10,15 @@ from typing import Any
 
 import tidalapi
 
-from tidaler.constants import (
+from tidal_dl_sg.constants import (
     ATMOS_CLIENT_ID,
     ATMOS_CLIENT_SECRET,
     ATMOS_REQUEST_QUALITY,
 )
-from tidaler.helper.decorator import SingletonMeta
-from tidaler.helper.path import path_config_base, path_file_settings, path_file_token
-from tidaler.model.cfg import Settings as ModelSettings
-from tidaler.model.cfg import Token as ModelToken
+from tidal_dl_sg.helper.decorator import SingletonMeta
+from tidal_dl_sg.helper.path import path_config_base, path_file_settings, path_file_token
+from tidal_dl_sg.model.cfg import Settings as ModelSettings
+from tidal_dl_sg.model.cfg import Token as ModelToken
 
 
 class BaseConfig:

@@ -8,15 +8,15 @@ from pathlib import Path
 from PySide6 import QtCore, QtGui, QtWidgets
 from tidalapi import Quality as QualityAudio
 
-from tidaler import __version__
-from tidaler.config import Settings
-from tidaler.constants import CoverDimensions, QualityVideo
-from tidaler.model.cfg import HelpSettings
-from tidaler.model.cfg import Settings as ModelSettings
-from tidaler.model.meta import ReleaseLatest
-from tidaler.ui.dialog_login import Ui_DialogLogin
-from tidaler.ui.dialog_settings import Ui_DialogSettings
-from tidaler.ui.dialog_version import Ui_DialogVersion
+from tidal_dl_sg import __version__
+from tidal_dl_sg.config import Settings
+from tidal_dl_sg.constants import CoverDimensions, QualityVideo
+from tidal_dl_sg.model.cfg import HelpSettings
+from tidal_dl_sg.model.cfg import Settings as ModelSettings
+from tidal_dl_sg.model.meta import ReleaseLatest
+from tidal_dl_sg.ui.dialog_login import Ui_DialogLogin
+from tidal_dl_sg.ui.dialog_settings import Ui_DialogSettings
+from tidal_dl_sg.ui.dialog_version import Ui_DialogVersion
 
 
 class DialogVersion(QtWidgets.QDialog):

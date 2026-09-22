@@ -1,22 +1,17 @@
-# tidaler! (download from tidal)
-
-[![Release](https://img.shields.io/github/v/release/maya-doshi/tidaler)](https://img.shields.io/github/v/release/maya-doshi/tidaler)
-[![Build status](https://img.shields.io/github/actions/workflow/status/maya-doshi/tidaler/release-or-test-build.yml)](https://github.com/maya-doshi/tidaler/actions/workflows/release-or-test-build.yml)
-[![Commit activity](https://img.shields.io/github/commit-activity/m/maya-doshi/tidaler)](https://img.shields.io/github/commit-activity/m/maya-doshi/tidaler)
-[![License](https://img.shields.io/github/license/maya-doshi/tidaler)](https://img.shields.io/github/license/maya-doshi/tidaler)
+# TIDAL Downloader Super Gen
 
 This tool allows you to download songs and videos from TIDAL. Multithreaded and multi-chunked downloads are supported.
 
-**Windows** Defender / **Anti Virus** software / web browser alerts, while you try to download the app binary: This is a **false positive**. Please read [this issue](https://github.com/maya-doshi/tidaler/issues/231), [PyInstaller (used by this project) statement](https://github.com/pyinstaller/pyinstaller/blob/develop/.github/ISSUE_TEMPLATE/antivirus.md) and [the alternative installation solution](https://github.com/maya-doshi/tidaler/?tab=readme-ov-file#-installation--upgrade).
+**Windows** Defender / **Anti Virus** software may flag app binaries. See the [PyInstaller statement](https://github.com/pyinstaller/pyinstaller/blob/develop/.github/ISSUE_TEMPLATE/antivirus.md), or use the Python package installation below.
 
 **A paid TIDAL plan is required!** Audio quality varies up to HiRes Lossless / TIDAL MAX 24-bit, 192 kHz depending on the song available. Dolby Atmos is supported. You can use the command line or GUI version of this tool.
 
 ![App Image](assets/app.png)
 
 ```bash
-$ tidaler --help
+$ tidal-dl-sg --help
 
- Usage: tidaler [OPTIONS] COMMAND [ARGS]...
+ Usage: tidal-dl-sg [OPTIONS] COMMAND [ARGS]...
 
 ╭─ Options ────────────────────────────────────────────────────────────────────╮
 │ --version  -v                                                                │
@@ -40,9 +35,9 @@ $ tidaler --help
 **Requirements**: Python version 3.12 / 3.13 / 3.14
 
 ```bash
-pip install --upgrade tidaler
+pip install --upgrade tidal-dl-sg
 # If you like to have the GUI as well use this command instead
-pip install --upgrade "tidaler[gui]"
+pip install --upgrade "tidal-dl-sg[gui]"
 ```
 
 ## Usage
@@ -50,32 +45,28 @@ pip install --upgrade "tidaler[gui]"
 You can use the command line (CLI) version to download media by URL:
 
 ```bash
-tidaler dl https://tidal.com/browse/track/46755209
-# OR
-tdn dl https://tidal.com/browse/track/46755209
+tidal-dl-sg dl https://tidal.com/browse/track/46755209
 ```
 
 Or by your favorites collections:
 
 ```bash
-tidaler dl_fav tracks
-tidaler dl_fav artists
-tidaler dl_fav albums
-tidaler dl_fav videos
+tidal-dl-sg dl_fav tracks
+tidal-dl-sg dl_fav artists
+tidal-dl-sg dl_fav albums
+tidal-dl-sg dl_fav videos
 ```
 
 You can also use the GUI:
 
 ```bash
-tidaler-gui
+tidal-dl-sg-gui
 # OR
-tdng
-# OR
-tidaler gui
+tidal-dl-sg gui
 ```
 
 If you would like to use the GUI version as a binary, have a look at the
-[release page](https://github.com/maya-doshi/tidaler/releases) and download the correct version for your OS.
+[release page](https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/releases) and download the correct version for your OS.
 
 ## Features
 
@@ -103,8 +94,8 @@ poetry install --all-extras --with dev,docs
 The main entry points are:
 
 ```bash
-tidaler/cli.py
-tidaler/gui.py
+tidal_dl_sg/cli.py
+tidal_dl_sg/gui.py
 ```
 
 ### GUI Builder
@@ -112,13 +103,13 @@ tidaler/gui.py
 The GUI is built with `PySide6` using the [Qt Designer](https://doc.qt.io/qt-6/qtdesigner-manual.html):
 
 ```bash
-PYSIDE_DESIGNER_PLUGINS=tidaler/ui pyside6-designer
+PYSIDE_DESIGNER_PLUGINS=tidal_dl_sg/ui pyside6-designer
 ```
 
 After all changes are saved, you need to translate the Qt Designer `*.ui` file into Python code, for instance:
 
 ```
-pyside6-uic tidaler/ui/main.ui -o tidaler/ui/main.py
+pyside6-uic tidal_dl_sg/ui/main.ui -o tidal_dl_sg/ui/main.py
 ```
 
 This needs to be done for each created / modified `*.ui` file accordingly.
@@ -157,7 +148,7 @@ If you download an (unsigned) app from any source other than those that Apple de
 Remove the attribute and you can launch the application. [Source 1](https://discussions.apple.com/thread/253714860?sortBy=rank) [Source 2](https://www.reddit.com/r/macsysadmin/comments/13vu7f3/app_is_damaged_and_cant_be_opened_error_on_ventura/)
 
 ```
-sudo xattr -dr com.apple.quarantine /Applications/tidaler.app/
+sudo xattr -dr com.apple.quarantine /Applications/tidal_dl_sg.app/
 ```
 
 Why is this app unsigned? Only developers enrolled in the paid Apple Developer Program are allowed to sign (legal) apps. Without this subscription, app signing is not possible.
@@ -168,7 +159,7 @@ Does Gatekeeper really annoy you, and you'd like to disable it completely? Follo
 
 Short answer: It is a lie. Get rid of your antivirus app.
 
-Long answer: See [here](https://web.archive.org/web/20251213202238/https://github.com/exislow/tidal-dl-ng/issues/231)
+Long answer: See [here](https://web.archive.org/web/20251213202238/https://github.com/exislow/tidal-dl-sg/issues/231)
 
 ### I get an error when `extract_flac` is enabled
 
@@ -186,7 +177,7 @@ sudo apt install libxcb-cursor0
 
 ### A terminal is flashing when I run this app on Windows
 
-Please see this issue [#103](https://web.archive.org/web/20251207002107/https://github.com/exislow/tidal-dl-ng/issues/103).
+Please see this issue [#103](https://web.archive.org/web/20251207002107/https://github.com/exislow/tidal-dl-sg/issues/103).
 
 This is due to the Python `ffmpeg` library which is used and only happens on windows if `extract_flac` is activated.
 
@@ -202,11 +193,11 @@ You need to activate `download_dolby_atmos` in the settings. Then, if an item is
 
 ## Contributors
 
-fork of tidal_dl_ng by exislow (the original repo and account disappeared). this fork exists to maintain functionality, and add some targeted improvements.
+This project continues the work of tidal-dl-ng by exislow and its subsequent maintainers. TIDAL Downloader Super Gen exists to maintain functionality and add targeted improvements.
 
 Thanks to all, who have contributed to this project!
 
-<a href="https://github.com/maya-doshi/tidaler/graphs/contributors"><img src="https://contributors-img.web.app/image?repo=maya-doshi/tidaler" /></a>
+See the repository history for upstream and current contributors.
 
 This project is based on:
 

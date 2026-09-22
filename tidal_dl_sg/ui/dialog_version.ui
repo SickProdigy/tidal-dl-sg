@@ -40,7 +40,7 @@
       </font>
      </property>
      <property name="text">
-      <string>tidaler</string>
+      <string>TIDAL Downloader Super Gen</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -207,7 +207,7 @@
    <item>
     <widget class="QLabel" name="l_url_github">
      <property name="text">
-      <string>&lt;a href=&quot;https://github.com/maya-doshi/tidaler/&quot;&gt;https://github.com/maya-doshi/tidaler/&lt;/a&gt;</string>
+      <string>&lt;a href=&quot;https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/&quot;&gt;https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/&lt;/a&gt;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

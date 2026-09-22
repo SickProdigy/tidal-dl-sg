@@ -72,7 +72,7 @@ __ERROR_KEY__ = (
     },
 )
 
-from tidaler.constants import REQUESTS_TIMEOUT_SEC
+from tidal_dl_sg.constants import REQUESTS_TIMEOUT_SEC
 
 
 def getNum():

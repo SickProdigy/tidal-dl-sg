@@ -7,7 +7,7 @@ from tidalapi.artist import Artist
 from tidalapi.media import Quality
 from tidalapi.playlist import Folder
 
-from tidaler.constants import QualityVideo
+from tidal_dl_sg.constants import QualityVideo
 
 
 def get_table_data(

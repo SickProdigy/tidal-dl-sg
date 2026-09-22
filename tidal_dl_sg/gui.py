@@ -1,13 +1,13 @@
 # Compilation mode, support OS-specific options
 # nuitka-project-if: {OS} in ("Darwin"):
 #    nuitka-project: --macos-create-app-bundle
-#    nuitka-project: --macos-app-icon=tidaler/ui/icon.icns
+#    nuitka-project: --macos-app-icon=tidal_dl_sg/ui/icon.icns
 #    nuitka-project: --macos-signed-app-name=com.exislow.TidalDlNg
 #    nuitka-project: --macos-app-mode=gui
 # nuitka-project-if: {OS} in ("Linux", "FreeBSD"):
-#    nuitka-project: --linux-icon=tidaler/ui/icon512.png
+#    nuitka-project: --linux-icon=tidal_dl_sg/ui/icon512.png
 # nuitka-project-if: {OS} in ("Windows"):
-#    nuitka-project: --windows-icon-from-ico=tidaler/ui/icon.ico
+#    nuitka-project: --windows-icon-from-ico=tidal_dl_sg/ui/icon.ico
 #    nuitka-project: --file-description="TIDAL media downloader next generation."
 
 # Debugging options, controlled via environment variable at compile time.
@@ -39,8 +39,8 @@
 # nuitka-project: --include-data-files={MAIN_DIRECTORY}/ui/icon*=ui/
 # nuitka-project: --include-data-files={MAIN_DIRECTORY}/ui/default_album_image.png=ui/default_album_image.png
 # nuitka-project: --include-data-files=./pyproject.toml=pyproject.toml
-# nuitka-project: --force-stderr-spec="{TEMP}/tidaler.err.log"
-# nuitka-project: --force-stdout-spec="{TEMP}/tidaler.out.log"
+# nuitka-project: --force-stderr-spec="{TEMP}/tidal_dl_sg.err.log"
+# nuitka-project: --force-stdout-spec="{TEMP}/tidal_dl_sg.out.log"
 # nuitka-project: --company-name=exislow
 
 
@@ -53,9 +53,9 @@ from typing import Any
 
 from requests.exceptions import HTTPError
 
-from tidaler import __version__, update_available
-from tidaler.dialog import DialogLogin, DialogPreferences, DialogVersion
-from tidaler.helper.gui import (
+from tidal_dl_sg import __version__, update_available
+from tidal_dl_sg.dialog import DialogLogin, DialogPreferences, DialogVersion
+from tidal_dl_sg.helper.gui import (
     FilterHeader,
     HumanProxyModel,
     get_queue_download_media,
@@ -66,8 +66,8 @@ from tidaler.helper.gui import (
     set_queue_download_media,
     set_user_list_media,
 )
-from tidaler.helper.path import get_format_template, resource_path
-from tidaler.helper.tidal import (
+from tidal_dl_sg.helper.path import get_format_template, resource_path
+from tidal_dl_sg.helper.tidal import (
     favorite_function_factory,
     get_tidal_media_id,
     get_tidal_media_type,
@@ -98,20 +98,20 @@ from tidalapi.media import AudioMode
 from tidalapi.playlist import Folder
 from tidalapi.session import SearchTypes
 
-from tidaler.config import HandlingApp, Settings, Tidal
-from tidaler.constants import FAVORITES, QualityVideo, QueueDownloadStatus, TidalLists
-from tidaler.download import Download
-from tidaler.logger import XStream, logger_gui
-from tidaler.model.gui_data import ProgressBars, QueueDownloadItem, ResultItem, StatusbarMessage
-from tidaler.model.meta import ReleaseLatest
-from tidaler.ui.main import Ui_MainWindow
-from tidaler.ui.spinner import QtWaitingSpinner
-from tidaler.worker import Worker
+from tidal_dl_sg.config import HandlingApp, Settings, Tidal
+from tidal_dl_sg.constants import FAVORITES, QualityVideo, QueueDownloadStatus, TidalLists
+from tidal_dl_sg.download import Download
+from tidal_dl_sg.logger import XStream, logger_gui
+from tidal_dl_sg.model.gui_data import ProgressBars, QueueDownloadItem, ResultItem, StatusbarMessage
+from tidal_dl_sg.model.meta import ReleaseLatest
+from tidal_dl_sg.ui.main import Ui_MainWindow
+from tidal_dl_sg.ui.spinner import QtWaitingSpinner
+from tidal_dl_sg.worker import Worker
 
 
 # TODO: Make more use of Exceptions
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    """Main application window for tidaler.
+    """Main application window for TIDAL Downloader Super Gen.
 
     Handles GUI setup, user interactions, and download logic.
     """
@@ -158,7 +158,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("tidaler")
+        self.setWindowTitle("TIDAL Downloader Super Gen")
 
         # Logging redirect.
         XStream.stdout().messageWritten.connect(self._log_output)

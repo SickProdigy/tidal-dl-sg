@@ -1,8 +1,11 @@
 [project]
-name = "tidaler"
-authors = [{ name = "Maya Doshi", email = "<maya-doshi@proton.me>" }]
+name = "tidal-dl-sg"
+authors = [
+  { name = "sickprodigy" },
+  { name = "Maya Doshi", email = "maya-doshi@proton.me" },
+]
 version = "0.1.8"
-description = "TIDAL Downloader (fork of tidal-dl-ng)"
+description = "TIDAL Downloader Super Gen"
 readme = "README.md"
 license = "AGPL-3.0-only"
 license-files = ["LICENSE"]
@@ -18,17 +21,15 @@ requires-python = ">=3.12,<3.15"
 dynamic = ["dependencies"]
 
 [project.urls]
-repository = "https://github.com/maya-doshi/tidaler"
-documentation = "https://github.com/maya-doshi/tidaler"
+repository = "https://gitea.rcs1.top/sickprodigy/tidal-dl-sg"
+documentation = "https://gitea.rcs1.top/sickprodigy/tidal-dl-sg"
 
 [project.scripts]
-tidaler = "tidaler.cli:app"
-tidaler-gui = "tidaler.gui:gui_activate"
-tdn = "tidaler.cli:app"
-tdng = "tidaler.gui:gui_activate"
+tidal-dl-sg = "tidal_dl_sg.cli:app"
+tidal-dl-sg-gui = "tidal_dl_sg.gui:gui_activate"
 
 [tool.poetry]
-packages = [{ include = "tidaler" }]
+packages = [{ include = "tidal_dl_sg" }]
 
 [tool.poetry.dependencies]
 requests = "~2.34.0"
@@ -138,7 +139,7 @@ ignore = [
 
 [tool.ruff.per-file-ignores]
 "tests/*" = ["S101"]
-"tidaler/cli.py" = ["UP007"]
+"tidal_dl_sg/cli.py" = ["UP007"]
 
 [tool.black]
 # https://github.com/psf/black
@@ -161,8 +162,8 @@ exclude = '''
     | venv
     | site
     | docs
-    | tidaler/ui/main.py
-    | tidaler/ui/dialog_version.py
+    | tidal_dl_sg/ui/main.py
+    | tidal_dl_sg/ui/dialog_version.py
 )/
 '''
 
@@ -207,7 +208,7 @@ known_third_party = [
 
 [tool.pyright]
 # https://microsoft.github.io/pyright/#/configuration
-include = ["tidaler"]
+include = ["tidal_dl_sg"]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"
 reportMissingImports = true

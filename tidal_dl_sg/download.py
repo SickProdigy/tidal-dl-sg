@@ -40,8 +40,8 @@ from tidalapi.media import (
     VideoExtensions,
 )
 
-from tidaler.config import Settings, Tidal
-from tidaler.constants import (
+from tidal_dl_sg.config import Settings, Tidal
+from tidal_dl_sg.constants import (
     CHUNK_SIZE,
     COVER_NAME,
     EXTENSION_LYRICS,
@@ -57,25 +57,25 @@ from tidaler.constants import (
     MetadataTargetUPC,
     QualityVideo,
 )
-from tidaler.helper.camelot import format_initial_key
-from tidaler.helper.decryption import decrypt_file, decrypt_security_token
-from tidaler.helper.exceptions import MediaMissing
-from tidaler.helper.path import (
+from tidal_dl_sg.helper.camelot import format_initial_key
+from tidal_dl_sg.helper.decryption import decrypt_file, decrypt_security_token
+from tidal_dl_sg.helper.exceptions import MediaMissing
+from tidal_dl_sg.helper.path import (
     check_file_exists,
     format_path_media,
     path_file_sanitize,
     url_to_filename,
 )
-from tidaler.helper.tidal import (
+from tidal_dl_sg.helper.tidal import (
     get_album_artists,
     instantiate_media,
     items_results_all,
     name_builder_item,
     name_builder_title,
 )
-from tidaler.metadata import Metadata
-from tidaler.model.downloader import DownloadSegmentResult, TrackStreamInfo
-from tidaler.model.gui_data import ProgressBars
+from tidal_dl_sg.metadata import Metadata
+from tidal_dl_sg.model.downloader import DownloadSegmentResult, TrackStreamInfo
+from tidal_dl_sg.model.gui_data import ProgressBars
 
 
 # TODO: Set appropriate client string and use it for video download.

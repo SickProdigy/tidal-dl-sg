@@ -4,8 +4,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from tidaler.constants import DownsampleTarget
-from tidaler.download import Download
+from tidal_dl_sg.constants import DownsampleTarget
+from tidal_dl_sg.download import Download
 
 
 @pytest.fixture
@@ -88,7 +88,7 @@ def test_retry_file_operation_does_not_sleep_after_final_attempt(download_instan
     def operation() -> bool:
         raise PermissionError(32, "The process cannot access the file because it is being used by another process")
 
-    with patch("tidaler.download.time.sleep") as sleep_mock:
+    with patch("tidal_dl_sg.download.time.sleep") as sleep_mock:
         result: bool = download_instance._retry_file_operation(operation, "locked operation")
 
     assert result is False
@@ -120,7 +120,7 @@ def test_media_move_and_symlink_skips_symlink_when_unlink_fails(
     )
 
     with (
-        patch("tidaler.download.format_path_media", return_value="Tracks/Artist - Title"),
+        patch("tidal_dl_sg.download.format_path_media", return_value="Tracks/Artist - Title"),
         patch.object(download_instance, "_move_file", return_value=True),
         patch.object(download_instance, "_unlink_with_retry", return_value=False),
         patch.object(pathlib.Path, "symlink_to") as symlink_to_mock,
@@ -158,8 +158,8 @@ def test_downsample_audio_raises_when_output_move_fails(
     flac_mock.info.sample_rate = 96000
     flac_mock.info.bits_per_sample = 24
     with (
-        patch("tidaler.download.FLAC", return_value=flac_mock),
-        patch("tidaler.download.subprocess.run"),
+        patch("tidal_dl_sg.download.FLAC", return_value=flac_mock),
+        patch("tidal_dl_sg.download.subprocess.run"),
         patch.object(download_instance, "_move_file", return_value=False),
         pytest.raises(OSError),
     ):

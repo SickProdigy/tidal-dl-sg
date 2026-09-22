@@ -140,7 +140,7 @@ class Ui_DialogVersion:
 
     def retranslateUi(self, DialogVersion):
         DialogVersion.setWindowTitle(QCoreApplication.translate("DialogVersion", "Version", None))
-        self.l_name_app.setText(QCoreApplication.translate("DialogVersion", "tidaler", None))
+        self.l_name_app.setText(QCoreApplication.translate("DialogVersion", "TIDAL Downloader Super Gen", None))
         self.l_h_version.setText(QCoreApplication.translate("DialogVersion", "Installed Version:", None))
         self.l_version.setText(QCoreApplication.translate("DialogVersion", "v1.2.3", None))
         self.l_error.setText(QCoreApplication.translate("DialogVersion", "ERROR", None))
@@ -153,7 +153,7 @@ class Ui_DialogVersion:
         self.l_url_github.setText(
             QCoreApplication.translate(
                 "DialogVersion",
-                '<a href="https://github.com/maya-doshi/tidaler/">https://github.com/maya-doshi/tidaler/</a>',
+                '<a href="https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/">https://gitea.rcs1.top/sickprodigy/tidal-dl-sg/</a>',
                 None,
             )
         )

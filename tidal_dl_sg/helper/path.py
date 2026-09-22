@@ -3,6 +3,7 @@ import os
 import pathlib
 import posixpath
 import re
+import shutil
 import sys
 from copy import deepcopy
 from urllib.parse import unquote, urlsplit
@@ -12,15 +13,15 @@ from pathvalidate.error import ValidationError
 from tidalapi import Album, Mix, Playlist, Track, UserPlaylist, Video
 from tidalapi.media import AudioExtensions
 
-from tidaler import __name_display__
-from tidaler.constants import (
+from tidal_dl_sg import __name_display__
+from tidal_dl_sg.constants import (
     FILENAME_LENGTH_MAX,
     FILENAME_SANITIZE_PLACEHOLDER,
     FORMAT_TEMPLATE_EXPLICIT,
     UNIQUIFY_THRESHOLD,
     MediaType,
 )
-from tidaler.helper.tidal import name_builder_album_artist, name_builder_artist, name_builder_title
+from tidal_dl_sg.helper.tidal import name_builder_album_artist, name_builder_artist, name_builder_title
 
 
 def path_home() -> str:
@@ -50,6 +51,13 @@ def path_config_base() -> str:
     path_user_custom: str = os.environ.get("XDG_CONFIG_HOME", "")
     path_config: str = ".config" if not path_user_custom else ""
     path_base: str = os.path.join(path_home(), path_config, __name_display__)
+
+    if not os.path.exists(path_base):
+        for old_name in ("tidaler", "tidal_dl_ng"):
+            old_path = os.path.join(path_home(), path_config, old_name)
+            if os.path.isdir(old_path):
+                shutil.copytree(old_path, path_base)
+                break
 
     return path_base
 

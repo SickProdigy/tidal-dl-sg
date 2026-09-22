@@ -6,8 +6,8 @@ from tidalapi.media import MediaMetadataTags, Quality
 from tidalapi.session import SearchTypes
 from tidalapi.user import LoggedInUser
 
-from tidaler.constants import FAVORITES, MediaType
-from tidaler.helper.exceptions import MediaUnknown
+from tidal_dl_sg.constants import FAVORITES, MediaType
+from tidal_dl_sg.helper.exceptions import MediaUnknown
 
 
 def name_builder_artist(media: Track | Video | Album, delimiter: str = ", ") -> str:

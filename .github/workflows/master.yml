@@ -26,4 +26,4 @@ jobs:
         run: python -m pytest
 
       - name: Verify CLI
-        run: tidaler --help
+        run: tidal-dl-sg --help
